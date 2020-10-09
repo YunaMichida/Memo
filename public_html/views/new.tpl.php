@@ -15,7 +15,7 @@
             <button type='submit'>作成する</button>
         </form>
 
-        <p><a href='work/memo-app/index.php'>一覧に戻る</a></p>
+        <p><a href='index.php'>一覧に戻る</a></p>
 
         <?php //include('footer.inc.php'); ?>
     </body>

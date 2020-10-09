@@ -7,7 +7,7 @@
 
         <p>タイトル:<?= $note->title ?></p>
         <div><?= $my_html ?></div>
-        <p><a href='public_html/index.php'>一覧に戻る</a> | 編集 | 削除</p>
+        <p><a href='index.php'>一覧に戻る</a> | 編集 | 削除</p>
 
         <?php //include('footer.inc.php'); ?>
     </body>
