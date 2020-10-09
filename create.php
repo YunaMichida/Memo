@@ -1,6 +1,6 @@
 <?php
 
-    require_once 'db_connect.php';
+    require_once 'public_html/db_connect.php';
 
     $note = new Note;
     $note->title = $_REQUEST['title'];
@@ -8,4 +8,4 @@
     $note->save();
 
     header('Location: show.php?id=' . $note->id);
-    exit;tml/views/show.tpl.php';
+    exit;
