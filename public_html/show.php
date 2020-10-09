@@ -1,6 +1,6 @@
 <?php
 
-    require_once 'public_html/db_connect.php';
+    require_once './db_connect.php';
 
     if(isset($_REQUEST['id'])) {
         $id = $_REQUEST['id'];
@@ -10,4 +10,4 @@
 
     $my_html = Michelf\Markdown::defaultTransform($note->content);
 
-    require_once 'public_html/views/show.tpl.php';
+    require_once './views/show.tpl.php';
