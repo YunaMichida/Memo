@@ -10,7 +10,8 @@
 		<form action="" method="POST">
 			UserName<input type="text" name="username" value=""><br>
 			Password<input type="password" name="password" value=""><br>
-			<input type="submit" name="signup" value="新規登録">
+			<a href='public_html/login.php'>
+			<input type="submit" name="signup" value="新規登録"></a>
 		</form>
 </body>
 </html>

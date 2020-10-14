@@ -1,4 +1,4 @@
 <?php
 
     $message = 'New user';
-    require_once 'views/login.tpl.php';
+    require_once 'views/signup.tpl.php';
