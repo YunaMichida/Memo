@@ -4,6 +4,7 @@
 
     use Illuminate\Database\Capsule\Manager as Capsule;
     use Illuminate\Database\Eloquent\Model as Model;
+    
 
     $db = new Capsule;
     $db->addConnection([
@@ -18,5 +19,12 @@
     $db->bootEloquent();
 
     class Note extends Model {
+
+    }
+
+    class User extends Model {
+        
+        const UPDATED_AT = null;
+        public $timestamps = false;
 
     }

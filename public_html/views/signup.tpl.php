@@ -7,7 +7,7 @@
 </head>
 <body>
 	<h1>新規登録画面</h1>
-		<form action="" method="POST">
+		<form action="login.php" method="POST">
 			UserName<input type="text" name="username" value=""><br>
 			Password<input type="password" name="password" value=""><br>
 			<a href='public_html/login.php'>
