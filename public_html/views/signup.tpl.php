@@ -12,6 +12,7 @@
 		<form action="user_create.php" method="POST">
 			UserName<input type="text" name="username" value=""><br>
 			Password<input type="password" name="password" value=""><br>
+			<?php echo $errorMessage?>
 			<input type="submit" name="signup" value="新規登録"></a>
 		</form>
 </body>
