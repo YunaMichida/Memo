@@ -9,12 +9,26 @@ try{
         throw new Exception('ユーザネームかパスワードが空です。');
     }
 
+    if( $userName === '' || $password === '' ) {
+        throw new Exception('ユーザネームかパスワードが空です。');
+    }
+
+    $existsUser = User::where('username', $userName)
+        ->where('password', $password)
+        ->exists();
+    
+    if ($existsUser) {
+        throw new Exception('この情報では登録出来ません。');
+    }
+
     $user = new User;
     $user->username = $userName;
     $user->password = $password;
     $user->save();
-
-} catch (Exception $e) {
+    
+    $message = '登録しました。';
+    require './login.php';
+    } catch (Exception $e) {
     $errorMessage = $e->getMessage();
-    require './view/signup.tpl.php';
+    require './signup.php';
 }
