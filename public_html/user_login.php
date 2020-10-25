@@ -4,7 +4,7 @@ try{
     $userName = $_POST['username'];
     $password = $_POST['password'];
 
-    
+
     
     if( is_null($userName) || is_null($password) ) {
         throw new Exception('ユーザネームかパスワードが空です。');
@@ -14,21 +14,21 @@ try{
         throw new Exception('ユーザネームかパスワードが空です。');
     }
 
-    $existsUser = User::where('username', $userName)
-        ->where('password', $password)
-        ->exists();
-    
+    $user = User::where('username', $userName)
+        ->first();
+        var_dump($user->password);
     // パスワードチェック
-    if(!password_verify($_REQUEST['password'], $user['hash'])){
+    if(!password_verify($password, $user['password'])){
         throw new Exception('ユーザ名かパスワードが正しくありません。');
         exit;
+        var_dump('e');
     }
-
-    
+    var_dump('a');
     $message = 'ログインしました。';
     require './index.php';
-    } catch (Exception $e) {
-    $errorMessage = $e->getMessage();
+} catch (Exception $e) { 
+    var_dump('p');
+    $errorMessage = $e->getMessage();    
     require './login.php';
 }
 

@@ -10,6 +10,7 @@
 
   <body>
     <h2>ログイン機能</h2>
+    <?php echo $errorMessage ?>
     <div class="sign-up">
         <form action="user_login.php" method="POST">
             <div>

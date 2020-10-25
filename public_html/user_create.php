@@ -14,15 +14,18 @@ try{
         throw new Exception('ユーザネームかパスワードが空です。');
     }
 
-    $existsUser = User::where('username', $userName)
-        ->where('password', $password)
-        ->exists();
+    $user = User::where('username', $userName)
+        ->first();
+    if(!password_verify($password, $user['password'])){
+        throw new Exception('このユーザーは登録できません');
+        exit;
+    }
     
-    if ($existsUser) {
+    if ($user) {
         throw new Exception('この情報では登録出来ません。');
     }
     //ハッシュを作る
-    $hash = password_hash($_REQUEST['password'], PASSWORD_BCRYPT);
+    $hash = password_hash($password, PASSWORD_BCRYPT);
     $user = new User;
     $user->username = $userName;
     $user->password = $hash;
@@ -30,7 +33,7 @@ try{
     
     $message = '登録しました。';
     require './login.php';
-    } catch (Exception $e) {
+} catch (Exception $e) {
     $errorMessage = $e->getMessage();
     require './signup.php';
 }
