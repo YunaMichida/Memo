@@ -18,21 +18,18 @@ try{
         ->where('password', $password)
         ->exists();
     
-    if ($existsUser) {
-        throw new Exception('この情報では登録出来ません。');
+    // パスワードチェック
+    if(!password_verify($_REQUEST['password'], $user['hash'])){
+        throw new Exception('ユーザ名かパスワードが正しくありません。');
+        exit;
     }
-    //ハッシュを作る
-    $hash = password_hash($_REQUEST['password'], PASSWORD_BCRYPT);
-    $user = new User;
-    $user->username = $userName;
-    $user->password = $hash;
-    $user->save();
+
     
-    $message = '登録しました。';
-    require './login.php';
+    $message = 'ログインしました。';
+    require './index.php';
     } catch (Exception $e) {
     $errorMessage = $e->getMessage();
-    require './signup.php';
+    require './login.php';
 }
 
 
