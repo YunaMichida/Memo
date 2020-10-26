@@ -16,6 +16,9 @@
 			Password<input type="password" name="password" value=""><br>
 			<?php echo $errorMessage?>
 			<input type="submit" name="signup" value="新規登録"></a>
+			<p><a href='login.php'>会員ログインはこちら</a></p>
+
+
 		</form>
 </body>
 </html>
