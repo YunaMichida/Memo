@@ -16,18 +16,18 @@ try{
 
     $user = User::where('username', $userName)
         ->first();
-        var_dump($user->password);
-    // パスワードチェック
-    if(!password_verify($password, $user['password'])){
-        throw new Exception('ユーザ名かパスワードが正しくありません。');
-        exit;
-        var_dump('e');
+          // パスワードチェック
+    if(password_verify($password, $user['password'])){
+        echo "ログイン認証に成功しました";
+        require './index.php';
+
+    }else{
+        echo "ログイン認証に失敗しました";
     }
-    var_dump('a');
-    $message = 'ログインしました。';
-    require './index.php';
 } catch (Exception $e) { 
-    var_dump('p');
+    session_regenerate_id(true);
+
+    
     $errorMessage = $e->getMessage();    
     require './login.php';
 }
