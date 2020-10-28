@@ -1,11 +1,30 @@
 <?php
 require_once 'db_connect.php';
+
+$userName = $_POST['username'];
+$password = $_POST['password'];
+
 try{
-    $userName = $_POST['username'];
-    $password = $_POST['password'];
+
+    validation();
+
+    $user = User::where('username', $userName)
+        ->first();
+
+    // パスワードチェック
+    if(!password_verify($password, $user['password'])){
+        throw new Exception("ログイン認証に失敗しました");
+    }
+
+    require './index.php';
+
+} catch (Exception $e) { 
+    $errorMessage = $e->getMessage();    
+    require './login.php';
+}
 
 
-    
+function validation(){
     if( is_null($userName) || is_null($password) ) {
         throw new Exception('ユーザネームかパスワードが空です。');
     }
@@ -13,23 +32,4 @@ try{
     if( $userName === '' || $password === '' ) {
         throw new Exception('ユーザネームかパスワードが空です。');
     }
-
-    $user = User::where('username', $userName)
-        ->first();
-          // パスワードチェック
-    if(password_verify($password, $user['password'])){
-        echo "ログイン認証に成功しました";
-        require './index.php';
-
-    }else{
-        echo "ログイン認証に失敗しました";
-    }
-} catch (Exception $e) { 
-    session_regenerate_id(true);
-
-    
-    $errorMessage = $e->getMessage();    
-    require './login.php';
 }
-
-

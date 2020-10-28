@@ -1,16 +1,13 @@
 <?php
 require_once 'db_connect.php';
+
+$userName = $_POST['username'];
+$password = $_POST['password'];
+
+
 try{
-    $userName = $_POST['username'];
-    $password = $_POST['password'];
 
-    if( is_null($userName) || is_null($password) ) {
-        throw new Exception('ユーザネームかパスワードが空です。');
-    }
-
-    if( $userName === '' || $password === '' ) {
-        throw new Exception('ユーザネームかパスワードが空です。');
-    }
+    validation();
 
     $user = User::where('username', $userName)
         ->first();
@@ -20,7 +17,6 @@ try{
         throw new Exception('このユーザーは登録できません');
         exit;
     }
-
 
     //ハッシュを作る
     $hash = password_hash($password, PASSWORD_BCRYPT);
@@ -38,3 +34,12 @@ try{
 }
 
 
+function validation() {
+    if( is_null($userName) || is_null($password) ) {
+        throw new Exception('ユーザネームかパスワードが空です。');
+    }
+
+    if( $userName === '' || $password === '' ) {
+        throw new Exception('ユーザネームかパスワードが空です。');
+    }
+}
