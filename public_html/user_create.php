@@ -7,7 +7,7 @@ $password = $_POST['password'];
 
 try{
 
-    validation();
+    validation($userName, $password);
 
     $user = User::where('username', $userName)
         ->first();
@@ -15,7 +15,6 @@ try{
     // ユーザがいない場合は↓の処理は必要ない
     if(password_verify($password, $user['password'])){
         throw new Exception('このユーザーは登録できません');
-        exit;
     }
 
     //ハッシュを作る
@@ -34,7 +33,7 @@ try{
 }
 
 
-function validation() {
+function validation($userName, $password) {
     if( is_null($userName) || is_null($password) ) {
         throw new Exception('ユーザネームかパスワードが空です。');
     }

@@ -6,7 +6,7 @@ $password = $_POST['password'];
 
 try{
 
-    validation();
+    validation($userName, $password);
 
     $user = User::where('username', $userName)
         ->first();
@@ -24,7 +24,7 @@ try{
 }
 
 
-function validation(){
+function validation($userName, $password){
     if( is_null($userName) || is_null($password) ) {
         throw new Exception('ユーザネームかパスワードが空です。');
     }
