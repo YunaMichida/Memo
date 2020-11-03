@@ -4,7 +4,6 @@ require_once 'db_connect.php';
 $userName = $_POST['username'];
 $password = $_POST['password'];
 
-
 try{
 
     validation($userName, $password);
@@ -19,10 +18,8 @@ try{
 
     //ハッシュを作る
     $hash = password_hash($password, PASSWORD_BCRYPT);
-    $user = new User;   
-    $user->username = $userName;
-    $user->password = $hash;
-    $user->save();
+
+    saveUser($userName, $hash);
     
     $message = '登録しました。';
     require './login.php';
@@ -41,4 +38,11 @@ function validation($userName, $password) {
     if( $userName === '' || $password === '' ) {
         throw new Exception('ユーザネームかパスワードが空です。');
     }
+}
+
+function saveUser($userName, $hash) {
+    $user = new User;   
+    $user->username = $userName;
+    $user->password = $hash;
+    $user->save();
 }

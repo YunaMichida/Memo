@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <a href="index.php?user_note=id値"><link rel="icon" href="../../favicon.ico"></a>
     <title>ログイン機能</title>
   </head>
 
