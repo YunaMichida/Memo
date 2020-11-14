@@ -16,6 +16,8 @@ try{
         throw new Exception("ログイン認証に失敗しました");
     }
 
+
+    $userId = $user->id;
     require './index.php';
 
 } catch (Exception $e) { 

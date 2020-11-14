@@ -10,7 +10,7 @@
             <tr><th>Id</th><th>タイトル</th></tr>
             <?php foreach ($notes as $note) { ?>
                 <tr>
-                    <td><?= $note->id ?></td>
+                    <td><?= $note->id?></td>
                     <td>
                         <a href='show.php?id=<?=$note->id?>'>
                             <?=$note->title?>

@@ -25,7 +25,7 @@
     class User extends Model {
 
     }
-    class User_Note extends Model {    
+    class UserNote extends Model {    
         
         const UPDATED_AT = null;
         public $timestamps = false;
