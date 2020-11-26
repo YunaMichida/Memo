@@ -4,9 +4,13 @@
 
     if(isset($_REQUEST['id'])) {
         $id = $_REQUEST['id'];
-        $note = Note::find($id);
+        $user_note = UserNote::find($userd);
         $note->delete();
     }
+
+    $notes =  Note::whereIn('id',$noteIds)
+    ->get();
+    $notes->delet();
 
     header('Location: index.php');
     exit;
