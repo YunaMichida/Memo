@@ -6,6 +6,7 @@
         <h1><?= $message ?></h1>
 
         <form action='create.php' method='post'>
+            <input type='hidden' name='user_id' value= <?= $userId ?>>  
             <label for='title'>タイトル</label><br>
             <input type='text' name='title' >
             <p></p>

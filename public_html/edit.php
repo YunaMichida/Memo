@@ -4,7 +4,7 @@
 
     if(isset($_REQUEST['id'])) {
         $id = $_REQUEST['id'];
-        $message = 'Edit note #' . $id;
+        $message = 'メモ編集#' . $id;
         $note = Note::find($id);
     }
 
